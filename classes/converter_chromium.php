@@ -103,7 +103,7 @@ class converter_chromium extends converter {
             $page->navigate($proxyurl->out(false))->waitForNavigation();
             $pdf = $page->pdf($options);
 
-            return base64_decode($pdf->getBase64());
+            return base64_decode($pdf->getBase64(10000));
         } finally {
             // Always close the browser instance to ensure that chromium process is stopped.
             if (!empty($browser) && $browser instanceof Browser) {
